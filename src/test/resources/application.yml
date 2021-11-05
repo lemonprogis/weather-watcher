@@ -1,0 +1,16 @@
+keycloak:
+  realm: integration-testing
+  resource: client-api
+  auth-server-url: ${KEYCLOAK_URL}
+  bearer-only: true
+  public-client: true
+
+integration-test:
+  clientId: public-client
+  url: ${KEYCLOAK_URL}
+  realm: integration-testing
+
+weathergov:
+  api:
+    user-agent: (weatherwatcher.com, ed.briggler@gmail.com)
+    base-url: http://localhost:${wiremock.server.port}

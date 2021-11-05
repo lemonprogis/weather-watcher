@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: weather-watcher
+
+server:
+  servlet:
+    context-path: /weather-watcher
+
+weathergov:
+  api:
+    user-agent: (weatherwatcher.com, ed.briggler@gmail.com)
+    base-url: https://api.weather.gov
