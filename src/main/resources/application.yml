@@ -6,6 +6,10 @@ server:
   servlet:
     context-path: /weather-watcher
 
+geocode:
+  api:
+    base-url: https://nominatim.openstreetmap.org
+
 weathergov:
   api:
     user-agent: (weatherwatcher.com, ed.briggler@gmail.com)

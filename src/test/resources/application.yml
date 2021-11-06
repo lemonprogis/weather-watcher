@@ -10,6 +10,10 @@ integration-test:
   url: ${KEYCLOAK_URL}
   realm: integration-testing
 
+geocode:
+  api:
+    base-url: http://localhost:${wiremock.server.port}
+
 weathergov:
   api:
     user-agent: (weatherwatcher.com, ed.briggler@gmail.com)

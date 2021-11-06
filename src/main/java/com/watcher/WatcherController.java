@@ -1,10 +1,11 @@
 package com.watcher;
 
+import com.watcher.model.POI;
 import org.geojson.Feature;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
+
+import java.util.List;
 
 @RestController
 public class WatcherController {
@@ -18,5 +19,10 @@ public class WatcherController {
     public Flux<Feature> getAlertsByLatLng(@RequestParam String lat,
                                            @RequestParam String lng) {
         return watcherService.getAlertsByLatLng(lat, lng);
+    }
+
+    @PostMapping("/track")
+    public Flux<POI> trackPointsOfInterest(@RequestBody List<POI> pois) {
+        return watcherService.geocodePOIs(pois);
     }
 }
