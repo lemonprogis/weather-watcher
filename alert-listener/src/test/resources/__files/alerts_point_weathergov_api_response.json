@@ -1,0 +1,223 @@
+{
+  "@context": [
+    "https://geojson.org/geojson-ld/geojson-context.jsonld",
+    {
+      "@version": "1.1",
+      "wx": "https://api.weather.gov/ontology#",
+      "@vocab": "https://api.weather.gov/ontology#"
+    }
+  ],
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.638c3e1b7797a81e1cb9e84a1304dc92eda39cac.002.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.638c3e1b7797a81e1cb9e84a1304dc92eda39cac.002.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.638c3e1b7797a81e1cb9e84a1304dc92eda39cac.002.1",
+        "areaDesc": "Boone; Marion; Baxter; Fulton; Sharp; Randolph; Newton; Searcy; Stone; Izard; Independence; Lawrence; Johnson; Pope; Van Buren; Cleburne; Jackson; Logan; Conway; Faulkner; White; Woodruff; Scott; Yell; Perry; Polk; Montgomery; Garland; Saline; Pulaski; Lonoke; Prairie; Monroe; Pike; Clark; Hot Spring; Grant; Jefferson; Arkansas; Dallas; Cleveland; Lincoln",
+        "geocode": {
+          "SAME": [
+            "005009",
+            "005089",
+            "005005",
+            "005049",
+            "005135",
+            "005121",
+            "005101",
+            "005129",
+            "005137",
+            "005065",
+            "005063",
+            "005075",
+            "005071",
+            "005115",
+            "005141",
+            "005023",
+            "005067",
+            "005083",
+            "005029",
+            "005045",
+            "005145",
+            "005147",
+            "005127",
+            "005149",
+            "005105",
+            "005113",
+            "005097",
+            "005051",
+            "005125",
+            "005119",
+            "005085",
+            "005117",
+            "005095",
+            "005109",
+            "005019",
+            "005059",
+            "005053",
+            "005069",
+            "005001",
+            "005039",
+            "005025",
+            "005079"
+          ],
+          "UGC": [
+            "ARZ003",
+            "ARZ004",
+            "ARZ005",
+            "ARZ006",
+            "ARZ007",
+            "ARZ008",
+            "ARZ012",
+            "ARZ013",
+            "ARZ014",
+            "ARZ015",
+            "ARZ016",
+            "ARZ017",
+            "ARZ021",
+            "ARZ022",
+            "ARZ023",
+            "ARZ024",
+            "ARZ025",
+            "ARZ030",
+            "ARZ031",
+            "ARZ032",
+            "ARZ033",
+            "ARZ034",
+            "ARZ037",
+            "ARZ038",
+            "ARZ039",
+            "ARZ040",
+            "ARZ041",
+            "ARZ042",
+            "ARZ043",
+            "ARZ044",
+            "ARZ045",
+            "ARZ046",
+            "ARZ047",
+            "ARZ052",
+            "ARZ053",
+            "ARZ054",
+            "ARZ055",
+            "ARZ056",
+            "ARZ057",
+            "ARZ062",
+            "ARZ063",
+            "ARZ064"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/ARZ003",
+          "https://api.weather.gov/zones/forecast/ARZ004",
+          "https://api.weather.gov/zones/forecast/ARZ005",
+          "https://api.weather.gov/zones/forecast/ARZ006",
+          "https://api.weather.gov/zones/forecast/ARZ007",
+          "https://api.weather.gov/zones/forecast/ARZ008",
+          "https://api.weather.gov/zones/forecast/ARZ012",
+          "https://api.weather.gov/zones/forecast/ARZ013",
+          "https://api.weather.gov/zones/forecast/ARZ014",
+          "https://api.weather.gov/zones/forecast/ARZ015",
+          "https://api.weather.gov/zones/forecast/ARZ016",
+          "https://api.weather.gov/zones/forecast/ARZ017",
+          "https://api.weather.gov/zones/forecast/ARZ021",
+          "https://api.weather.gov/zones/forecast/ARZ022",
+          "https://api.weather.gov/zones/forecast/ARZ023",
+          "https://api.weather.gov/zones/forecast/ARZ024",
+          "https://api.weather.gov/zones/forecast/ARZ025",
+          "https://api.weather.gov/zones/forecast/ARZ030",
+          "https://api.weather.gov/zones/forecast/ARZ031",
+          "https://api.weather.gov/zones/forecast/ARZ032",
+          "https://api.weather.gov/zones/forecast/ARZ033",
+          "https://api.weather.gov/zones/forecast/ARZ034",
+          "https://api.weather.gov/zones/forecast/ARZ037",
+          "https://api.weather.gov/zones/forecast/ARZ038",
+          "https://api.weather.gov/zones/forecast/ARZ039",
+          "https://api.weather.gov/zones/forecast/ARZ040",
+          "https://api.weather.gov/zones/forecast/ARZ041",
+          "https://api.weather.gov/zones/forecast/ARZ042",
+          "https://api.weather.gov/zones/forecast/ARZ043",
+          "https://api.weather.gov/zones/forecast/ARZ044",
+          "https://api.weather.gov/zones/forecast/ARZ045",
+          "https://api.weather.gov/zones/forecast/ARZ046",
+          "https://api.weather.gov/zones/forecast/ARZ047",
+          "https://api.weather.gov/zones/forecast/ARZ052",
+          "https://api.weather.gov/zones/forecast/ARZ053",
+          "https://api.weather.gov/zones/forecast/ARZ054",
+          "https://api.weather.gov/zones/forecast/ARZ055",
+          "https://api.weather.gov/zones/forecast/ARZ056",
+          "https://api.weather.gov/zones/forecast/ARZ057",
+          "https://api.weather.gov/zones/forecast/ARZ062",
+          "https://api.weather.gov/zones/forecast/ARZ063",
+          "https://api.weather.gov/zones/forecast/ARZ064"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.74a8f117f64bd4ef63790627ec81118ad5b98966.002.2",
+            "identifier": "urn:oid:2.49.0.1.840.0.74a8f117f64bd4ef63790627ec81118ad5b98966.002.2",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2021-11-04T04:12:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.74a8f117f64bd4ef63790627ec81118ad5b98966.001.2",
+            "identifier": "urn:oid:2.49.0.1.840.0.74a8f117f64bd4ef63790627ec81118ad5b98966.001.2",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2021-11-04T04:12:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.74a8f117f64bd4ef63790627ec81118ad5b98966.003.2",
+            "identifier": "urn:oid:2.49.0.1.840.0.74a8f117f64bd4ef63790627ec81118ad5b98966.003.2",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2021-11-04T04:12:00-05:00"
+          }
+        ],
+        "sent": "2021-11-04T14:35:00-05:00",
+        "effective": "2021-11-04T14:35:00-05:00",
+        "onset": "2021-11-05T01:00:00-05:00",
+        "expires": "2021-11-05T05:00:00-05:00",
+        "ends": "2021-11-05T09:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Freeze Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Little Rock AR",
+        "headline": "Freeze Warning issued November 4 at 2:35PM CDT until November 5 at 9:00AM CDT by NWS Little Rock AR",
+        "description": "* WHAT...Sub-freezing temperatures are likely late tonight through\nearly Friday morning.\n\n* WHERE...Portions of central, eastern, north central,\nsoutheast, southwest and western Arkansas.\n\n* WHEN...From late tonight through Friday morning.\n\n* IMPACTS...Frost and freeze conditions will kill crops, other\nsensitive vegetation and possibly damage unprotected outdoor\nplumbing.",
+        "instruction": "Take steps now to protect tender plants from the cold. To prevent\nfreezing and possible bursting of outdoor water pipes they should\nbe wrapped, drained, or allowed to drip slowly. Those that have\nin-ground sprinkler systems should drain them and cover above-\nground pipes to protect them from freezing.",
+        "response": "Execute",
+        "parameters": {
+          "AWIPSidentifier": [
+            "NPWLZK"
+          ],
+          "WMOidentifier": [
+            "WWUS74 KLZK 041935"
+          ],
+          "NWSheadline": [
+            "FREEZE WARNING REMAINS IN EFFECT FROM 1 AM TO 9 AM CDT FRIDAY"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.CON.KLZK.FZ.W.0006.211105T0600Z-211105T1400Z/"
+          ],
+          "eventEndingTime": [
+            "2021-11-05T14:00:00+00:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.711a06297fd63baf0bbac312e69d933b7299a4f5.001.2,2021-11-03T19:56:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.ba53f9a7701bc599893d55f0ba96d58f8627f40e.001.1,2021-11-03T12:04:00-05:00"
+          ]
+        }
+      }
+    }
+  ],
+  "title": "current watches, warnings, and advisories for 35.020262 N, 92.475396 W",
+  "updated": "2021-11-04T19:36:42+00:00"
+}

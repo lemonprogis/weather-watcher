@@ -9,9 +9,9 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<artifactId>poi-api</artifactId>
+	<artifactId>alert-listener</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<name>poi-api</name>
+	<name>alert-listener</name>
 	<packaging>jar</packaging>
 	<description>App to monitor alerts by states</description>
 

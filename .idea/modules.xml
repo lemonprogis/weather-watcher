@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/alert-listener/alert-listener.iml" filepath="$PROJECT_DIR$/alert-listener/alert-listener.iml" />
+      <module fileurl="file://$PROJECT_DIR$/poi-api/poi-api.iml" filepath="$PROJECT_DIR$/poi-api/poi-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weather-watcher.iml" filepath="$PROJECT_DIR$/weather-watcher.iml" />
+    </modules>
+  </component>
+</project>
