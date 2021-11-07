@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("poi")
 public class POI {
     @Id
-    public String id;
+    private String id;
     private String title;
     private String lat;
     private String lng;
