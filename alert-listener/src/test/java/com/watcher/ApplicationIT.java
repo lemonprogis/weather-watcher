@@ -1,28 +1,23 @@
 package com.watcher;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import com.github.tomakehurst.wiremock.client.WireMock;
+import dasniko.testcontainers.keycloak.KeycloakContainer;
 import lombok.extern.slf4j.Slf4j;
-import org.geojson.Feature;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
-import org.springframework.http.MediaType;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
+import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.containers.MongoDBContainer;
+import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
-
-import java.util.List;
-import java.util.Optional;
-
-import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
-import static org.assertj.core.api.Assertions.assertThat;
+import org.testcontainers.utility.DockerImageName;
 
 @Slf4j
 @Testcontainers
@@ -32,6 +27,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ApplicationIT {
 
+	private static final String mongoVersion = "mongo:4.4.4";
+	private static final Integer mongoPort = 27017;
+
+	private static final String redisVersion = "redis:5.0.3-alpine";
+	private static final Integer redisPort = 6379;
+
 	@LocalServerPort
 	private int port;
 
@@ -40,65 +41,54 @@ class ApplicationIT {
 
 	private static WebTestClient webTestClient;
 
+	@Container
+	private static final MongoDBContainer mongoDBContainer =
+			new MongoDBContainer(DockerImageName.parse(mongoVersion))
+					.withExposedPorts(mongoPort);
+
+	@Container
+	private static final GenericContainer redisContainer =
+			new GenericContainer(DockerImageName.parse(redisVersion))
+					.withExposedPorts(redisPort);
+
+	@Container
+	private static final KeycloakContainer keycloakContainer =
+			new KeycloakContainer().withRealmImportFile("realm-export.json");
+
+	@SuppressWarnings("unused")
+	@DynamicPropertySource
+	static void propertySetup(DynamicPropertyRegistry registry) {
+		registry.add("mongo.connection.host", mongoDBContainer::getContainerIpAddress);
+		registry.add("mongo.connection.port", () -> mongoDBContainer.getFirstMappedPort().toString());
+		registry.add("spring.redis.host", redisContainer::getContainerIpAddress);
+		registry.add("spring.redis.port", redisContainer::getFirstMappedPort);
+		registry.add("KEYCLOAK_URL", keycloakContainer::getAuthServerUrl);
+	}
+
+	@BeforeAll
+	static void setUpAll() {
+		mongoDBContainer.start();
+		redisContainer.start();
+		keycloakContainer.start();
+	}
+
 	@BeforeEach
 	void beforeEach() {
 		String baseUrl = String.format("http://localhost:%d", port);
 		webTestClient = WebTestClient.bindToServer().baseUrl(baseUrl).build();
 	}
 
-	@Test
-	public void getAlertsFromLatLng_happyPath() {
-		// ARRANGE
-		String lat = "35.020262";
-		String lng = "-92.475396";
+	@AfterAll
+	static void tearDownAll() {
+		if (!mongoDBContainer.isShouldBeReused()) {
+			mongoDBContainer.stop();
+		}
+		if (!redisContainer.isShouldBeReused()) {
+			redisContainer.stop();
+		}
 
-		wireMockServer.stubFor(
-				WireMock.get(urlEqualTo(String.format("/alerts/active?point=%s,%s",lat,lng)))
-						.willReturn(WireMock.aResponse()
-								.withHeader("Content-Type", "application/json")
-								.withBodyFile("alerts_point_weathergov_api_response.json")));
-
-		// ACT and ASSERT
-		// create first then retrieve it, then delete it
-		webTestClient.get()
-				.uri(String.format("/alerts?lat=%s&lng=%s",lat,lng))
-				.accept(MediaType.APPLICATION_JSON)
-				.exchange()
-				.expectStatus()
-				.is2xxSuccessful()
-				.expectBodyList(Feature.class)
-				.consumeWith( r -> {
-					List<Feature> actual = Optional.ofNullable(r.getResponseBody()).orElseThrow();
-					assertThat(actual).isNotNull();
-					log.info("{}", actual);
-				});
+		if(!keycloakContainer.isShouldBeReused()) {
+			keycloakContainer.stop();
+		}
 	}
-
-	/*@Test
-	public void geocodeTest() throws IOException {
-		ObjectMapper mapper = new ObjectMapper();
-		String request = new String(readAllBytes(get("src/test/resources/__files/geocode_request.json"))).trim();
-		List payload = mapper.readValue(request, List.class);
-		wireMockServer.stubFor(
-				WireMock.get(urlEqualTo("/search.php?street=2835%20glohaven%20drive&city=conway&state=ar&postalcode=72034&polygon_geojson=1&format=jsonv2"))
-						.willReturn(WireMock.aResponse()
-								.withHeader("Content-Type", "application/json")
-								.withBodyFile("geocode_response.json")));
-
-		// ACT and ASSERT
-		// create first then retrieve it, then delete it
-		webTestClient.post()
-				.uri("/track")
-				.accept(MediaType.APPLICATION_JSON)
-				.body(BodyInserters.fromValue(payload))
-				.exchange()
-				.expectStatus()
-				.is2xxSuccessful()
-				.expectBodyList(POI.class)
-				.consumeWith( r -> {
-					List<POI> actual = Optional.ofNullable(r.getResponseBody()).orElseThrow();
-					assertThat(actual).isNotNull();
-					log.info("{}", actual);
-				});
-	}*/
 }

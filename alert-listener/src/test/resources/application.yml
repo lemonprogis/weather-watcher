@@ -1,3 +1,11 @@
+spring:
+  redis:
+    password:
+  data:
+    mongodb:
+      uri: mongodb://${mongo.connection.host}:${mongo.connection.port}/
+      database: test
+
 keycloak:
   realm: integration-testing
   resource: client-api
