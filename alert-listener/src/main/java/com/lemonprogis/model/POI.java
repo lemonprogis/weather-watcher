@@ -1,20 +1,12 @@
 package com.lemonprogis.model;
 
-import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.Data;
 
-@Getter
-@Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Document("poi")
+@Data
 public class POI {
-    @Id
     public String id;
     private String title;
     private String lat;
     private String lng;
-    private Boolean track = true;
+    private Boolean track;
 }

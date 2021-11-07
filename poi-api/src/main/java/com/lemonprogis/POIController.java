@@ -12,15 +12,20 @@ import java.util.List;
 @RestController
 @RequestMapping("/poi")
 public class POIController {
-    private final PoiRepository poiRepository;
+    private final POIRepository poiRepository;
 
-    public POIController(PoiRepository poiRepository) {
+    public POIController(POIRepository poiRepository) {
         this.poiRepository = poiRepository;
     }
 
     @GetMapping("/{id}")
     public Mono<POI> getPOI(@PathVariable String id) {
         return poiRepository.findById(id);
+    }
+
+    @GetMapping("/track")
+    public Flux<POI> getPOIsToTrack() {
+        return poiRepository.findPOISByTrackEquals(true);
     }
 
     @PostMapping
