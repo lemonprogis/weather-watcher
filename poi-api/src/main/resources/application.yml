@@ -14,3 +14,15 @@ weathergov:
   api:
     user-agent: (weatherwatcher.com, ed.briggler@gmail.com)
     base-url: https://api.weather.gov
+---
+spring:
+  redis:
+    host: localhost
+    password: ""
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017
+      database: weatherwatcher
+  config:
+    activate:
+      on-profile: "LOCAL"

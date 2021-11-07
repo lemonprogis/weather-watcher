@@ -1,9 +1,7 @@
 package com.watcher;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
-import com.watcher.model.POI;
 import lombok.extern.slf4j.Slf4j;
 import org.geojson.Feature;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,16 +16,12 @@ import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import org.springframework.web.reactive.function.BodyInserters;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
-import static java.nio.file.Files.readAllBytes;
-import static java.nio.file.Paths.get;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
@@ -80,7 +74,7 @@ class ApplicationIT {
 				});
 	}
 
-	@Test
+	/*@Test
 	public void geocodeTest() throws IOException {
 		ObjectMapper mapper = new ObjectMapper();
 		String request = new String(readAllBytes(get("src/test/resources/__files/geocode_request.json"))).trim();
@@ -106,6 +100,5 @@ class ApplicationIT {
 					assertThat(actual).isNotNull();
 					log.info("{}", actual);
 				});
-
-	}
+	}*/
 }

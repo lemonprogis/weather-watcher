@@ -1,6 +1,5 @@
 package com.watcher;
 
-import com.watcher.model.GeocodeResponse;
 import com.watcher.model.POI;
 import lombok.extern.slf4j.Slf4j;
 import org.geojson.Feature;
@@ -9,30 +8,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 
-import java.util.List;
-
 @Slf4j
 @Service
 public class WatcherService {
     private final WebClient weatherGovApiWebClient;
-    private final GeocodeService geocodeService;
 
-    public WatcherService(WebClient weatherGovApiWebClient, GeocodeService geocodeService) {
+    public WatcherService(WebClient weatherGovApiWebClient) {
         this.weatherGovApiWebClient = weatherGovApiWebClient;
-        this.geocodeService = geocodeService;
     }
 
-    public Flux<Feature> getAlertsByLatLng(String lat, String lng) {
+    public Flux<Feature> getAlertsByLatLng(POI poi) {
         return weatherGovApiWebClient.get()
-                .uri(String.format("/alerts/active?point=%s,%s", lat,lng))
+                .uri(String.format("/alerts/active?point=%s,%s", poi.getLat(), poi.getLng()))
                 .retrieve()
                 .bodyToMono(FeatureCollection.class)
                 .map(FeatureCollection::getFeatures)
                 .flatMapMany(Flux::fromIterable);
     }
-
-    public Flux<POI> geocodePOIs(List<POI> pois) {
-        return geocodeService.geocodePOIs(pois);
-    }
-
 }
