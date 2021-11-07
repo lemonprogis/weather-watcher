@@ -1,7 +1,7 @@
-package com.watcher.configuration;
+package com.lemonprogis.configuration;
 
-import com.watcher.properties.GeocodeApiProperties;
-import com.watcher.properties.WeatherGovApiProperties;
+import com.lemonprogis.properties.GeocodeApiProperties;
+import com.lemonprogis.properties.WeatherGovApiProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;

@@ -1,4 +1,4 @@
-package com.watcher;
+package com.lemonprogis;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import dasniko.testcontainers.keycloak.KeycloakContainer;

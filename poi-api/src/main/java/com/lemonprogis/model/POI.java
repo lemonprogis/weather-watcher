@@ -1,4 +1,4 @@
-package com.watcher.model;
+package com.lemonprogis.model;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;

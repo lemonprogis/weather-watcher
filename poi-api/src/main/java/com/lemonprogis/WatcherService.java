@@ -1,6 +1,6 @@
-package com.watcher;
+package com.lemonprogis;
 
-import com.watcher.model.POI;
+import com.lemonprogis.model.POI;
 import lombok.extern.slf4j.Slf4j;
 import org.geojson.Feature;
 import org.geojson.FeatureCollection;
