@@ -7,8 +7,13 @@
       <option name="url" value="http://artifactory-prd.jbhunt.com/artifactory/maven-repos" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="releases" />
-      <option name="name" value="libs-releases" />
+      <option name="id" value="geomajas" />
+      <option name="name" value="Geomajas Maven Repository" />
+      <option name="url" value="http://artifactory-prd.jbhunt.com/artifactory/maven-repos" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="osgeo-snapshot" />
+      <option name="name" value="OSGeo Snapshot Repository" />
       <option name="url" value="http://artifactory-prd.jbhunt.com/artifactory/maven-repos" />
     </remote-repository>
     <remote-repository>
@@ -17,13 +22,48 @@
       <option name="url" value="https://repo1.maven.org/maven2" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="snapshots" />
+      <option name="name" value="libs-snapshots" />
+      <option name="url" value="http://artifactory-prd.jbhunt.com/artifactory/maven-repos" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="releases" />
+      <option name="name" value="libs-releases" />
+      <option name="url" value="http://artifactory-prd.jbhunt.com/artifactory/maven-repos" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="osgeo-alt" />
+      <option name="name" value="osgeo-alt" />
+      <option name="url" value="http://artifactory-prd.jbhunt.com/artifactory/maven-repos" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="jboss.community" />
       <option name="name" value="JBoss Community repository" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="snapshots" />
-      <option name="name" value="libs-snapshots" />
+      <option name="id" value="osgeo" />
+      <option name="name" value="OSGeo Release Repository" />
+      <option name="url" value="http://artifactory-prd.jbhunt.com/artifactory/maven-repos" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="geotools-release" />
+      <option name="name" value="OSGeo Release Repository" />
+      <option name="url" value="http://artifactory-prd.jbhunt.com/artifactory/maven-repos" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="osgeo" />
+      <option name="name" value="Open Source Geospatial Foundation Repository" />
+      <option name="url" value="http://artifactory-prd.jbhunt.com/artifactory/maven-repos" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="boundless" />
+      <option name="name" value="Boundless Maven Repository" />
+      <option name="url" value="http://artifactory-prd.jbhunt.com/artifactory/maven-repos" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="opengeo" />
+      <option name="name" value="OpenGeo Maven Repository" />
       <option name="url" value="http://artifactory-prd.jbhunt.com/artifactory/maven-repos" />
     </remote-repository>
   </component>

@@ -14,7 +14,6 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.testcontainers.containers.GenericContainer;
-import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
@@ -26,9 +25,6 @@ import org.testcontainers.utility.DockerImageName;
 @AutoConfigureWireMock(port = 0)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ApplicationIT {
-
-	private static final String mongoVersion = "mongo:4.4.4";
-	private static final Integer mongoPort = 27017;
 
 	private static final String redisVersion = "redis:5.0.3-alpine";
 	private static final Integer redisPort = 6379;
@@ -42,11 +38,6 @@ class ApplicationIT {
 	private static WebTestClient webTestClient;
 
 	@Container
-	private static final MongoDBContainer mongoDBContainer =
-			new MongoDBContainer(DockerImageName.parse(mongoVersion))
-					.withExposedPorts(mongoPort);
-
-	@Container
 	private static final GenericContainer redisContainer =
 			new GenericContainer(DockerImageName.parse(redisVersion))
 					.withExposedPorts(redisPort);
@@ -58,8 +49,6 @@ class ApplicationIT {
 	@SuppressWarnings("unused")
 	@DynamicPropertySource
 	static void propertySetup(DynamicPropertyRegistry registry) {
-		registry.add("mongo.connection.host", mongoDBContainer::getContainerIpAddress);
-		registry.add("mongo.connection.port", () -> mongoDBContainer.getFirstMappedPort().toString());
 		registry.add("spring.redis.host", redisContainer::getContainerIpAddress);
 		registry.add("spring.redis.port", redisContainer::getFirstMappedPort);
 		registry.add("KEYCLOAK_URL", keycloakContainer::getAuthServerUrl);
@@ -67,7 +56,6 @@ class ApplicationIT {
 
 	@BeforeAll
 	static void setUpAll() {
-		mongoDBContainer.start();
 		redisContainer.start();
 		keycloakContainer.start();
 	}
@@ -80,9 +68,6 @@ class ApplicationIT {
 
 	@AfterAll
 	static void tearDownAll() {
-		if (!mongoDBContainer.isShouldBeReused()) {
-			mongoDBContainer.stop();
-		}
 		if (!redisContainer.isShouldBeReused()) {
 			redisContainer.stop();
 		}
